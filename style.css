@@ -1,0 +1,311 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-header {
+            padding: 30px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .site-logo {
+            width: 20%;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .site-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .site-title a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .site-title a:hover {
+            color: #0066cc;
+        }
+
+        .site-main {
+            padding: 50px 0;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .post {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .post:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-image {
+            width: 100%;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .post:hover .post-image img {
+            transform: scale(1.05);
+        }
+
+        .post-header {
+            padding: 20px 20px 0;
+        }
+
+        .post-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .post-title a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .post-title a:hover {
+            color: #0066cc;
+        }
+
+        .post-meta {
+            font-size: 13px;
+            color: #888;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .post-meta span {
+            margin-right: 12px;
+        }
+
+        .post-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            padding: 0 20px;
+        }
+
+        .post-content p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .post-footer {
+            padding: 15px 20px 20px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            background-color: #fafafa;
+            margin-top: 40px;
+        }
+
+        .site-footer p {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Estilos do Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 0;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+            padding-right: 20px;
+        }
+
+        .modal-meta {
+            font-size: 13px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .modal-meta span {
+            margin-right: 15px;
+        }
+
+        .close {
+            color: #888;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 16px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .site-header {
+                padding: 20px 0;
+            }
+
+            .site-title {
+                font-size: 24px;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .post-title {
+                font-size: 18px;
+            }
+
+            .modal-content {
+                margin: 20px auto;
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }

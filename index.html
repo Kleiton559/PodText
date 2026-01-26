@@ -1,434 +1,253 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Futuro da Inteligência Artificial</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #333;
-            background: url('./kleiton.jpeg') center/cover no-repeat fixed;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 40px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .audio-player {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            margin: 30px 40px 0;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .play-button {
-            background: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-            flex-shrink: 0;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-        }
-
-        .play-button svg {
-            width: 24px;
-            height: 24px;
-            fill: #667eea;
-        }
-
-        .audio-info {
-            flex: 1;
-            color: white;
-        }
-
-        .audio-info p {
-            margin-bottom: 10px;
-            font-size: 0.9em;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 3px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: white;
-            width: 0%;
-            transition: width 0.1s;
-        }
-
-        .content {
-            padding: 60px 40px;
-        }
-
-        .content h2 {
-            font-size: 1.8em;
-            margin: 40px 0 20px;
-            color: #667eea;
-        }
-
-        .content p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            text-align: justify;
-        }
-
-        .content p:first-of-type::first-letter {
-            font-size: 3.5em;
-            float: left;
-            line-height: 0.8;
-            margin: 10px 10px 0 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .cta {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px;
-            text-align: center;
-            color: white;
-        }
-
-        .cta h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .cta button {
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-
-        .cta button:hover {
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8em;
-            }
-
-            .content {
-                padding: 40px 20px;
-            }
-
-            .audio-player {
-                margin: 30px 20px 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Plataforma de Podcasts</title>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>PodText - Reflexão</h1>
-            <p>Entre o que fomos e o que podemos ser</p>
-            
-            <div class="audio-player">
-                <button class="play-button" id="playBtn">
-                    <svg id="playIcon" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
-                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-                    </svg>
-                </button>
-                <div class="audio-info">
-                    <p>🎧 Ouça este artigo • <span id="duration">5:30</span></p>
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-            </div>
+    <header class="site-header">
+        <div class="container">
+            <img class="site-logo" src="./img/Logotipo.jpeg" alt="Logo" srcset="">
+            <h1 class="site-title"><a href="/">Podcasts Narrativos</a></h1>    
         </div>
 
-        <div class="content">
-        
-            <h2>Entre o que fomos e o que podemos ser</h2>
-            
-
-            <p>
-                
-Quando olho para dois mil e vinte e cinco, uma palavra me vem à mente: transição. Não aquela transição limpa, organizada, que aparece nos gráficos corporativos. Mas a transição real, bagunçada, feita de tentativas, erros, pequenas vitórias e muitas dúvidas.
-
-Foi o ano em que muitos de nós finalmente entendemos que a inteligência artificial não é mais ficção científica nem promessa distante. Ela está aqui, nas nossas conversas, no nosso trabalho, nas nossas buscas por significado. E isso trouxe uma sensação ambígua. Por um lado, a empolgação de ver o impossível se tornar rotina. Por outro, aquele desconforto profundo de não saber exatamente qual é o nosso lugar nesse mundo que se reorganiza enquanto ainda tentamos entender o anterior.
-
-Passamos dois mil e vinte e cinco fazendo perguntas que nunca imaginamos ter que fazer. O que é autêntico quando a criação artificial se torna indistinguível da humana? Como nos conectamos verdadeiramente quando algoritmos medeiam cada encontro? Qual o valor do nosso esforço quando máquinas podem fazer em segundos o que levávamos horas para construir?
-
-
-
-E não foram apenas perguntas filosóficas. Foram dilemas práticos. Foram pessoas reais perdendo empregos que pareciam seguros. Foram crianças crescendo sem saber se a voz que ouvem é humana ou simulada. Foram artistas, escritores, programadores, designers, todos nós, na verdade, renegociando nossa identidade profissional e criativa.
-
-Mas aqui está algo que aprendi observando esse ano: a angústia não invalida o avanço, e o avanço não apaga a angústia. Ambos coexistem. E talvez seja justamente nessa tensão que encontremos nossa humanidade mais autêntica.
-
-
-
-Dois mil e vinte e cinco também foi o ano em que a saúde mental deixou de ser tabu e se tornou parte da conversa cotidiana. Mas não nos enganemos: falar sobre o tema não significa que estamos lidando melhor com ele. Na verdade, quanto mais falamos, mais percebemos o tamanho do desafio.
-
-Vivemos em um paradoxo constante. Temos mais ferramentas de bem-estar do que nunca, mais aplicativos de meditação, mais acesso a informação sobre autocuidado. E ao mesmo tempo, nunca fomos tão sobrecarregados. A pressa virou identidade. O cansaço virou emblema de importância. E o tempo livre, aquele tempo sem propósito produtivo, virou quase um luxo inacessível.
-
-Quantas vezes você, nos últimos meses, sentiu que estava vivendo na velocidade errada? Como se houvesse uma corrida acontecendo e você nem soubesse para onde estava correndo, mas não podia parar porque todos ao redor também estavam correndo?
-
-
-
-E as relações. As relações humanas passaram por sua própria metamorfose. Alguns de nós redescobrimos a presença. Jantares sem celular na mesa. Conversas onde realmente ouvimos, não apenas esperamos nossa vez de falar. Mas também aprendemos como é difícil estar presente. Como nosso cérebro foi treinado para a distração, para o próximo estímulo, para a notificação que pode mudar tudo.
-
-Amizades à distância se fortaleceram através de mensagens de voz que carregam mais intimidade que mil textos digitados. E amizades próximas se fragilizaram porque esquecemos como estar juntos sem precisar documentar o momento.
-
-Foi um ano de perceber que solidão não é sobre estar só. É sobre estar desconectado. E você pode estar desconectado em uma sala cheia de gente.
-
-
-No cenário maior, dois mil e vinte e cinco nos forçou a viver com incerteza como condição permanente. As velhas estruturas de previsibilidade desmoronaram. Economias oscilaram. Políticas se radicalizaram ou se esvaziaram. O clima nos lembrou, repetidas vezes, que não somos tão poderosos quanto gostamos de acreditar.
-
-E talvez o aprendizado mais duro seja este: não há retorno ao normal porque aquele normal nunca foi tão estável quanto pareceu. Ele era apenas familiar. E nós confundimos familiaridade com segurança.
-
-Então o que fizemos? Nos adaptamos. Porque é isso que humanos fazem desde sempre. Criamos novos rituais. Encontramos novos sentidos. Inventamos novos jeitos de pertencer. Não perfeitamente, não sem dor, mas persistentemente.
-
-E agora, aqui estamos nós, na fronteira entre o que conhecemos e o que está por vir. Dois mil e vinte e seis não é uma página em branco porque não existe página em branco. Carregamos conosco tudo o que vivemos, aprendemos e perdemos.
-
-Mas existe algo poderoso em reconhecer isso. Não precisamos fingir que começamos do zero. Podemos começar exatamente de onde estamos.
-
-Então o que podemos esperar? O que é realista imaginar para os próximos meses?
-
-A tecnologia vai continuar avançando. Isso não é previsão, é fato. A inteligência artificial vai se aprofundar em nossas vidas, para o bem e para o mal. Novos dilemas éticos vão surgir. Novas profissões vão nascer enquanto outras desaparecem. E nós, como sempre, vamos nos perguntar se estamos preparados.
-
-A resposta honesta é: não, provavelmente não estamos completamente preparados. E talvez nunca estejamos. Mas estar preparado não é o pré-requisito para seguir em frente. Coragem é.
-
-
-Dois mil e vinte e seis será o ano em que precisaremos escolher conscientemente onde colocamos nossa atenção. Porque atenção se tornou o recurso mais escasso e mais valioso que temos. Tudo e todos competem por ela. E o que você escolhe observar, consumir, absorver, molda quem você se torna.
-
-Será também o ano de redefinir produtividade. Não como quantidade de tarefas concluídas, mas como qualidade de vida vivida. Como presença cultivada. Como relações nutridas. Como sentido construído, mesmo nas pequenas coisas.
-
-E precisaremos, mais do que nunca, aprender a conviver com a ambiguidade. Com o fato de que podemos sentir esperança e medo ao mesmo tempo. Gratidão e luto. Empolgação e exaustão. Somos grandes o suficiente para conter contradições.
-
-
-
-Tem uma coisa sobre o futuro que precisamos reconhecer: ele não acontece com a gente, ele acontece através da gente. Cada escolha minúscula que fazemos todos os dias, cada conversa que priorizamos, cada vez que dizemos sim ou não, tudo isso tece o que virá.
-
-Então dois mil e vinte e seis será o que nós fizermos dele, mas não de forma individual e heroica. Será o que construirmos juntos, em comunidade, em conexão genuína, em compaixão ativa.
-
-E talvez seja hora de redefinir o que significa ter sucesso. Não pelo tanto que acumulamos, mas pelo tanto que nos permitimos ser. Não pela impressão que causamos, mas pela presença que oferecemos. Não pelo reconhecimento externo, mas pela paz interna.
-
-
-
-Há uma tendência crescente que vale observar: o retorno ao local. Depois de anos de conexões globais e virtuais, muitas pessoas estão redescobrindo o poder do próximo. Da vizinhança. Da comunidade física. Dos pequenos comércios. Das conversas cara a cara. Não como rejeição ao digital, mas como complemento essencial.
-
-É como se estivéssemos aprendendo que não é "ou isto ou aquilo", mas "isto e aquilo". Podemos ter tecnologia e humanidade. Podemos ter eficiência e contemplação. Podemos ter ambição e descanso.
-
-
-
-Dois mil e vinte e seis também vai nos desafiar a sermos mais honestos. Honestos sobre nossas limitações. Honestos sobre o que não sabemos. Honestos sobre quando precisamos de ajuda. Porque a cultura da super performance nos adoeceu. E reconhecer vulnerabilidade não é fraqueza, é libertação.
-
-Vai ser o ano de conversas difíceis. Sobre privilégio, sobre responsabilidade, sobre o mundo que estamos deixando para quem vem depois. Sobre como nossas escolhas de conforto afetam a vida de pessoas que nunca encontraremos.
-
-E essas conversas não serão fáceis. Vão exigir que deixemos de lado nossas certezas confortáveis e abracem a complexidade desconfortável. Mas são necessárias. Porque empatia sem ação é apenas sentimento vazio.
-
-
-
-Mas sabe o que me dá esperança de verdade? Não é otimismo cego. É observar como, mesmo nos momentos mais sombrios, humanos criam. Criam arte, criam soluções, criam beleza. Às vezes simplesmente para provar que ainda podem.
-
-É ver como jovens que cresceram em meio ao caos climático não desistiram, mas se organizaram. Como comunidades periféricas que sempre foram ignoradas construíram suas próprias redes de apoio. Como pessoas comuns fazem o extraordinário acontecer com recursos ordinários.
-
-A esperança não está em acreditar que tudo ficará bem magicamente. Está em reconhecer que, mesmo quando não fica bem, encontramos formas de continuar. E que continuar já é uma forma de resistência.
-
-
-
-Então, enquanto dois mil e vinte e seis se aproxima, não te peço que faças promessas grandiosas. Não te peço que seja uma versão completamente nova de ti mesmo. Porque você não precisa de revolução. Você precisa de evolução. E evolução acontece no acúmulo de pequenos passos persistentes.
-
-Talvez em dois mil e vinte e seis você simplesmente escolha estar mais presente. Talvez escolha ligar para aquele amigo que anda distante. Talvez escolha ler mais, consumir menos. Talvez escolha criar algo com as mãos, algo que não precisa ser perfeito nem lucrativo, só significativo.
-
-Talvez escolha descansar sem culpa. Talvez escolha dizer não mais vezes para proteger seu tempo e sua paz. Talvez escolha ser mais gentil consigo mesmo quando as coisas não saírem como planejado.
-
-
-
-Porque no fim, quando olharmos para trás daqui a um ano, o que importará não serão os grandes feitos. Serão os momentos em que nos permitimos ser plenamente humanos. Imperfeitos, vulneráveis, buscando, errando, tentando de novo.
-
-
-
-Tem uma pergunta que gosto de carregar comigo, e quero compartilhar contigo agora: que tipo de ancestral você quer ser?
-
-Não no sentido biológico necessariamente, mas no sentido de que tudo o que fazemos ou deixamos de fazer reverbera. As histórias que contamos, os valores que defendemos, os pequenos atos de coragem ou bondade, tudo isso ecoa para além de nós.
-
-Em dois mil e vinte e seis, podemos escolher ser ancestrais de um futuro mais compassivo. Mais consciente. Mais corajoso. Não porque temos todas as respostas, mas justamente porque não temos, e ainda assim, escolhemos tentar.
-
-
-Então aqui está meu convite para você, enquanto esse ano se encerra e outro começa: não busque certezas. Busque presença. Não busque controle total. Busque adaptabilidade. Não busque perfeição. Busque autenticidade.
-
-E quando o mundo parecer grande demais, caótico demais, assustador demais, lembre-se de que você só precisa cuidar do que está ao seu alcance. A sua respiração. A sua próxima escolha. A pessoa que está à sua frente.
-
-Porque mudança sistêmica começa com mudança pessoal. E mudança pessoal irradia para além de nós de formas que nunca conseguimos mensurar completamente.
-
-Dois mil e vinte e cinco nos ensinou que somos mais frágeis do que gostaríamos de admitir. Mas também mais resilientes do que imaginávamos. Dois mil e vinte e seis nos convidará a honrar ambas as verdades.
-
-E talvez, só talvez, a grande virada não seja externa. Talvez seja interna. Talvez seja sobre finalmente fazer as pazes com a nossa humanidade imperfeita. Sobre parar de esperar ser super-humanos e começar a celebrar ser profundamente, maravilhosamente, complexamente humanos.
-
-
-Então respira comigo mais uma vez. Sente o peso desse ano que se encerra. Honra tudo o que você atravessou. E então, devagar, solta. Porque você não precisa carregar tudo sozinho para o próximo ciclo.
-
-Dois mil e vinte e seis está logo ali. Esperando. Não como promessa de perfeição, mas como convite para mais uma tentativa. Mais uma chance de nos tornarmos um pouco mais do que podemos ser.
-
-E isso, no fim das contas, é tudo o que podemos pedir.
-
-É tudo o que precisamos.
-
-
-Que seja leve. Que seja verdadeiro. Que seja humano.
-
-            </p>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="posts-grid">
+                <article class="post" data-post-id="1">
+                    <div class="post-image">
+                        <img src="img/editorial-philosophical-illustration-mon_7c0XWRQHThSRjR1EWcgtAg_TOIw8oZ8TWeVjcH_viktIw.jpeg" alt="Episódio 1">
+                    </div>
+                    <header class="post-header">
+                        <h2 class="post-title"><a href="#"># Entre o Ser e o Estar</a></h2>
+                        <br>
+                        <div class="post-meta">
+                            <span class="post-date">09 de Janeiro de 2026</span>
+                            <span class="post-author">Por: Kleiton Da Rosa</span>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>E Você já parou para pensar por que algumas pessoas marcam nossa vida para sempre, enquanto outras, 
+                        mesmo tendo convivido conosco por muito tempo, deixam apenas rastros superficiais em nossa memória? 
+                        Por que certas presenças nos transformam profundamente, enquanto outras apenas nos atravessam como uma brisa passageira?
+                        A resposta talvez esteja numa distinção filosófica que raramente fazemos conscientemente: a diferença entre quem é em nossa... 
+                        </p>
+                    </div>
+                    <footer class="post-footer">
+                        <a href="#" class="read-more" onclick="openModal(1); return false;">Continue lendo →</a>
+                    </footer>
+                </article>
+
+                <article class="post" data-post-id="2">
+                    <div class="post-image">
+                        <img src="./img/Riquezas_que_odinheiro_nao_compra.jpeg" alt="Episódio 2">
+                    </div>
+                    <header class="post-header">
+                        <h2 class="post-title"><a href="#"># Riquezas que o Dinheiro não Compra</a></h2>
+                        <div class="post-meta">
+                            <span class="post-date">09 de Janeiro de 2026</span>
+                            <span class="post-author">Por: Kleiton Da Rosa</span>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>Esta série de podcasts narrativos é uma arqueologia do presente que revela camadas invisíveis da experiência humana. 
+                            Cada narrativa funciona como prisma que refracta a realidade, exigindo de si cumplicidade intelectual e disposição para o desconforto que precede toda transformação genuína. 
+                            Atreva-se a desmantelar certezas, questionar o óbvio e permitir-se não saber. 
+                            O que descobrirá poderá alterar irreversivelmente a forma como habita este mundo.
+                        </p>
+                    </div>
+                    <footer class="post-footer">
+                        <a href="#" class="read-more" onclick="openModal(2); return false;">Continue lendo →</a>
+                    </footer>
+                </article>   
             </div>
+        </div>
+    </main>
 
-        <div class="cta">
-            <h3>Gostou deste conteúdo?</h3>
-            <button onclick="alert('Obrigado pelo interesse! Em breve você receberá mais conteúdos.')">Inscreva-se para Mais</button>
+    <!-- Modal -->
+    <div id="podcastModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-meta">
+                        <span id="modalDate"></span>
+                        <span id="modalAuthor"></span>
+                    </div>
+                </div>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 - Developed by: Kleiton Da Rosa.</p>
+        </div>
+    </footer>
+
     <script>
-        let isPlaying = false;
-        let speechSynthesis = window.speechSynthesis;
-        let utterance = null;
+        // Conteúdo completo dos podcasts
+        const podcastContent = {
+            1: {
+                title: "# Entre o Ser e o Estar",
+                date: "09 de Janeiro de 2026",
+                author: "Por: Kleiton Da Rosa",
+                content: `
+                <p style = "text-align:justify">
+        Já parou para pensar por que algumas pessoas marcam a nossa vida para sempre, enquanto outras, 
+    mesmo tendo convivido connosco por muito tempo, deixam apenas marcas superficiais na nossa memória? 
+    Por que certas presenças nos transformam profundamente, enquanto outras apenas nos atravessam como uma brisa passageira?
+    A resposta talvez esteja numa distinção filosófica que raramente fazemos conscientemente: a diferença entre quem é na nossa 
+    vida e quem apenas está. Não se trata de uma questão de tempo ou proximidade física, mas de algo muito mais subtil e profundo,
+     uma questão de essência versus circunstância.
+    Algumas pessoas são como raízes no nosso jardim interior: nutrem, sustentam, fazem parte da nossa estrutura emocional. 
+    Outras são como pássaros que pousam nos nossos galhos: belas, significativas no seu momento, mas destinadas a seguir viagem. 
+    Ambas as presenças têm o seu valor, a sua função, a sua beleza única.
+    Este pequeno podcast narrativo é um convite para explorarmos juntos essa distinção, não para julgar ou hierarquizar os nossos relacionamentos, 
+    mas sim compreendê-los melhor. Para aprendermos a reconhecer, valorizar e relacionar-nos de forma mais consciente com cada tipo de vínculo 
+    que a vida nos oferece.
+    Porque quando sabemos distinguir entre o ser e o estar, descobrimos uma nova forma de amar, de sofrer menos e de celebrar mais intensamente 
+    cada encontro humano que cruza o nosso caminho.
+</p>
 
-        const playBtn = document.getElementById('playBtn');
-        const playIcon = document.getElementById('playIcon');
-        const pauseIcon = document.getElementById('pauseIcon');
-        const progressBar = document.getElementById('progressBar');
-        const progressFill = document.getElementById('progressFill');
 
-        function getArticleText() {
-            const content = document.querySelectorAll('.content p, .content h2');
-            let text = '';
-            content.forEach(el => {
-                text += el.textContent + '. ';
-            });
-            return text;
-        }
+<p style = "text-align:justify">
+   Há pessoas que, desde o primeiro encontro, parecem ter sempre feito parte da nossa vida. 
+   Não importa há quanto tempo as conhecemos, pode ser ontem ou há décadas, elas carregam uma familiaridade inexplicável, 
+   como se fossem pedaços de nós mesmos que estavam perdidos e finalmente voltaram para casa. 
+</p>
 
-        function selectCapeVerdeanVoice() {
-            const voices = speechSynthesis.getVoices();
-            // Procura por voz masculina de Cabo Verde (pt-CV)
-            let voice = voices.find(v => v.lang === 'pt-PT' && v.name.toLowerCase().includes('male'));
-            // Se não encontrar, procura qualquer voz de Cabo Verde
-            if (!voice) voice = voices.find(v => v.lang === 'pt-CV');
-            // Fallback para português de Portugal masculino
-            if (!voice) voice = voices.find(v => v.lang === 'pt-PT' && v.name.toLowerCase().includes('male'));
-            // Fallback para qualquer voz portuguesa masculina
-            if (!voice) voice = voices.find(v => v.lang.startsWith('pt') && v.name.toLowerCase().includes('male'));
-            return voice;
-        }
+<p style = "text-align:justify">
+    Imagine duas pessoas a conhecerem-se numa fila de café. Começam uma conversa casual sobre o tempo, mas em poucos minutos estão a falar sobre sonhos, medos, perspetivas de vida. Horas depois, quando finalmente se despedem, ambas têm a estranha sensação de que acabaram de reencontrar um velho amigo. Não conseguem explicar racionalmente, mas algo dentro delas reconhece algo no outro.
+    Isso é o que acontece quando alguém é na nossa vida. Não é uma questão de compatibilidade superficial ou interesses em comum, embora esses elementos possam existir. É uma ressonância mais profunda, uma sintonia que acontece no nível da alma, como diria o filósofo Martin Buber ao falar sobre o encontro genuíno entre duas pessoas.
 
-        // Carrega as vozes quando disponíveis
-        speechSynthesis.onvoiceschanged = () => {
-            selectCapeVerdeanVoice();
+    Quem é na nossa vida possui uma qualidade peculiar: mesmo quando está fisicamente ausente, continua presente nos nossos pensamentos, influenciando as nossas decisões, moldando a nossa forma de ver o mundo. São pessoas que carregamos connosco, não como peso, mas como bússola interna.
+    O filósofo francês Jean-Paul Sartre dizia que "o inferno são os outros", mas também reconhecia que a nossa identidade se forma através do olhar do outro. Quando alguém é na nossa vida, esse olhar fortalece-nos, define-nos de forma positiva, ajuda-nos a tornarmo-nos quem realmente somos.
+
+    Uma característica marcante destes vínculos é como o tempo se comporta de forma diferente com essas pessoas. Podemos ficar meses sem conversar, mas quando nos reencontramos, é como se tivéssemos parado de falar ontem. A conversa flui, a intimidade permanece intacta, a conexão restabelece-se instantaneamente.
+    Isso acontece porque essas pessoas não estão apenas na nossa história, elas são parte da nossa história. Não são capítulos que lemos e fechamos, são personagens que permeiam toda a narrativa da nossa vida, influenciando outros capítulos mesmo quando não aparecem diretamente na cena.
+
+</p>
+<p style = "text-align:justify">
+    Nem todo encontro humano precisa de ser eterno para ser precioso. Algumas das experiências mais transformadoras da nossa vida vêm de pessoas que apenas estão connosco por um período determinado, cumprindo um papel específico no nosso crescimento, aprendizado ou cura.
+
+    Pense num professor que marcou a sua adolescência, num colega de trabalho que se tornou amigo durante um projeto desafiador, ou mesmo num desconhecido que disse exatamente as palavras certas no momento certo. Essas pessoas estão na nossa vida por uma razão, uma estação, um propósito específico.
+    O filósofo grego Heráclito ensinou-nos que "ninguém pode banhar-se duas vezes no mesmo rio", porque tanto o rio quanto a pessoa mudam constantemente. Da mesma forma, alguns vínculos humanos são como rios que cruzamos: refrescam-nos, nutrem-nos, carregam-nos por um trecho do caminho, mas não foram feitos para durar para sempre.
+
+    Quando alguém está na nossa vida, a nossa tendência natural pode ser tentar transformar essa presença em permanência. Queremos que aquele amigo especial de uma viagem se torne o nosso confidente de toda a vida, ou que aquele relacionamento apaixonado se estenda indefinidamente no tempo. Mas isso pode ser como tentar prender um pássaro selvagem, perdemos a beleza da sua natureza livre.
+    Aceitar que algumas pessoas apenas estão connosco é um exercício de sabedoria e maturidade emocional. É reconhecer que o valor de um vínculo não se mede pela sua duração, mas pela intensidade e autenticidade do que é vivido enquanto ele existe.
+
+    Muitas vezes, pessoas que apenas estão na nossa vida chegam carregando exatamente aquilo de que precisamos naquele momento: uma lição, uma perspetiva, um desafio, uma cura. São como presentes do universo, embrulhados na forma de relacionamentos temporários.
+    Um chefe exigente pode ensinar-nos disciplina e excelência. Um amor que não deu certo pode mostrar-nos aspetos nossos que precisavam de ser trabalhados. Um amigo que se afasta pode ensinar-nos sobre independência emocional. Essas pessoas cumprem o seu papel transformador e seguem os seus caminhos, deixando em nós marcas de crescimento.
+
+    Quando compreendemos que nem toda presença precisa de ser permanente, desenvolvemos uma gratidão mais refinada. Passamos a valorizar intensamente cada momento com essas pessoas, sabendo que são finitos. Isso não nos torna melancólicos, mas mais presentes, mais conscientes da preciosidade de cada encontro.
+
+</p>
+<p style = "text-align:justify">
+    A sabedoria está em reconhecer a natureza de cada vínculo e relacionar-se com ele de acordo com a sua essência. Quando tentamos fazer com que alguém que apenas está se torne alguém que é, ou quando não valorizamos adequadamente quem realmente é na nossa vida, criamos frustrações, expectativas não correspondidas e sofrimentos desnecessários.
+
+    Imagine a sua vida como um grande mapa emocional. Algumas pessoas são como cidades principais, destinos centrais para onde sempre podemos voltar, lugares que nunca saem do nosso roteiro de vida. Outras são como belas paisagens que avistamos durante a viagem, marcantes, inspiradoras, mas que pertencem àquele momento específico da jornada.
+    Não há hierarquia de valor entre estes tipos de vínculo. Uma paisagem deslumbrante pode transformar-nos tanto quanto uma cidade que visitamos repetidamente. A diferença está na função que cada uma exerce na nossa experiência de vida.
+    
+    Sinais de Quem É e Sinais de Quem Está
+    
+    Como reconhecer a natureza de um vínculo? Algumas pistas podem ajudar-nos:
+    
+    Sinais de quem É: 
+    1 - A presença dessa pessoa acalma-nos, fortalece-nos ou inspira-nos naturalmente;
+    2 - Existe uma comunicação que vai além das palavras;
+    3 - O tempo e a distância não enfraquecem o vínculo;
+    4 - Crescem juntos, influenciando mutuamente a evolução um do outro;
+    5 - Há uma aceitação incondicional, mesmo diante das imperfeições.
+    <br>
+    Sinais de quem Está:
+
+    1 - A conexão é mais circunstancial (trabalho, escola, momento da vida);
+    2 - Existe uma sensação de que aquilo tem prazo de validade;
+    3 - O vínculo serve a um propósito específico de aprendizado ou experiência;
+    4 - Quando as circunstâncias mudam, a intensidade da relação também muda;
+    5 - A pessoa aparece na sua vida em momentos de transição ou necessidade específica.
+    <br>
+    Quando paramos de tentar transformar cada pessoa especial num vínculo permanente, experimentamos uma liberdade extraordinária. Podemos viver cada relacionamento na sua plenitude, sem a ansiedade de controlar o seu futuro. Podemos amar intensamente sabendo que nem todo amor precisa de ser eterno para ser verdadeiro.
+    
+    O Equilíbrio Saudável
+    
+    Uma vida emocionalmente saudável precisa de ambos os tipos de vínculo. Quem é na nossa vida dá-nos estabilidade, raízes, sentido de pertença. Quem está traz-nos renovação, aprendizado, aventura. São como a respiração: inspirar e expirar, receber e soltar, construir e fluir.
+    Martin Heidegger, o filósofo alemão, falava sobre a importância de estar aberto ao que ele chamava de "acontecimento apropriado", estar recetivo àquilo que a vida nos apresenta. Quando sabemos diferenciar entre ser e estar, desenvolvemos essa abertura consciente aos diversos tipos de encontro que a existência nos oferece.
+    
+    Para refletir: Como tem lidado com os diferentes tipos de vínculo na sua vida? Há relacionamentos que está a forçar a ser permanentes quando talvez sejam temporários? Há pessoas importantes que não tem valorizado adequadamente por achá-las muito "óbvias" na sua vida?
+
+
+    A vida é uma dança delicada entre permanência e impermanência, entre raízes e asas, entre ser e estar. Quando aprendemos os passos dessa dança, quando sabemos quando segurar e quando soltar, quando aprofundar e quando fluir, descobrimos uma nova forma de nos relacionarmos com o mundo e com as pessoas.
+    Cada vínculo humano carrega a sua própria sabedoria, o seu próprio presente, a sua própria contribuição para quem estamos a tornar-nos. Não precisamos que todos sejam eternos para que sejam valiosos. Não precisamos que todos sejam profundos para que sejam significativos.
+    O que precisamos é de olhos para ver, coração para sentir e sabedoria para honrar cada tipo de presença na nossa vida. Porque no final, são esses encontros, os que ficam e os que passam, os que nos acompanham e os que nos atravessam, que tecem a rica tapeçaria da nossa existência humana.
+    A pergunta que fica não é "quem deveria ser ou estar na minha vida?", mas sim: "como posso viver cada encontro na sua plenitude, honrando a sua natureza única e recebendo com gratidão tudo o que ele tem para me oferecer?"
+    Porque quando paramos de tentar controlar a natureza dos nossos vínculos e começamos a dançar com ela, descobrimos que a vida se torna mais leve, mais rica e infinitamente mais bela.
+</p>
+                
+
+                `
+            },
+            2: {
+                title: "# Riquezas que o Dinheiro não Compra",
+                date: "09 de Janeiro de 2026",
+                author: "Por: Kleiton Da Rosa",
+                content: `
+                    <p>No episódio de hoje, vamos refletir sobre os verdadeiros tesouros da vida - aqueles que não podem ser adquiridos com dinheiro, mas que representam as maiores riquezas que um ser humano pode possuir.</p>
+                    
+                    <p>Vivemos numa sociedade que frequentemente confunde valor com preço, que mede o sucesso pelo tamanho da conta bancária. Mas as experiências mais significativas da vida humana não têm etiqueta de preço.</p>
+                    
+                    <p>O amor genuíno, aquele que nasce da conexão verdadeira entre duas pessoas, não pode ser comprado. Você pode comprar presentes luxuosos, mas não pode comprar o sentimento sincero que faz alguém pensar em você antes de dormir.</p>
+                    
+                    <p>O tempo é outra riqueza inestimável. Uma vez perdido, nunca volta. Você pode ser a pessoa mais rica do mundo, mas não pode comprar um único segundo a mais de vida. O tempo com pessoas queridas, os momentos de paz, as experiências que nos transformam - estes são investimentos que nenhum dinheiro pode fazer.</p>
+                    
+                    <p>A saúde, tanto física quanto mental, é uma fortuna que só valorizamos plenamente quando a perdemos. Você pode pagar pelos melhores médicos e tratamentos, mas não pode comprar um corpo livre de doenças ou uma mente em paz.</p>
+                    
+                    <p>A sabedoria que vem da experiência, a serenidade que nasce do autoconhecimento, a alegria simples de uma manhã tranquila - estas são as verdadeiras riquezas que fazem a vida valer a pena.</p>
+                    
+                    <p>Que possamos todos reconhecer e valorizar as riquezas que já possuímos. Até a próxima!</p>
+                `
+            }
         };
 
-        playBtn.addEventListener('click', () => {
-            if (!isPlaying) {
-                if (!utterance) {
-                    utterance = new SpeechSynthesisUtterance(getArticleText());
-                    utterance.lang = 'pt-CV'; // Português de Cabo Verde
-                    utterance.rate = 1.0; // Velocidade normal
-                    utterance.pitch = 0.9; // Tom mais grave (masculino)
-                    
-                    const selectedVoice = selectCapeVerdeanVoice();
-                    if (selectedVoice) {
-                        utterance.voice = selectedVoice;
-                    }
-                    
-                    utterance.onend = () => {
-                        isPlaying = false;
-                        playIcon.style.display = 'block';
-                        pauseIcon.style.display = 'none';
-                        progressFill.style.width = '0%';
-                    };
-                }
-                
-                speechSynthesis.speak(utterance);
-                isPlaying = true;
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-                animateProgress();
-            } else {
-                speechSynthesis.cancel();
-                isPlaying = false;
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-                utterance = null;
-            }
-        });
+        function openModal(postId) {
+            const modal = document.getElementById('podcastModal');
+            const content = podcastContent[postId];
+            
+            document.getElementById('modalTitle').innerHTML = content.title;
+            document.getElementById('modalDate').textContent = content.date;
+            document.getElementById('modalAuthor').textContent = content.author;
+            document.getElementById('modalBody').innerHTML = content.content;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-        function animateProgress() {
-            if (isPlaying) {
-                const currentProgress = parseFloat(progressFill.style.width) || 0;
-                if (currentProgress < 100) {
-                    progressFill.style.width = (currentProgress + 0.3) + '%';
-                    setTimeout(animateProgress, 100);
-                }
+        function closeModal() {
+            const modal = document.getElementById('podcastModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal ao clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('podcastModal');
+            if (event.target == modal) {
+                closeModal();
             }
         }
 
-        progressBar.addEventListener('click', (e) => {
-            const rect = progressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            progressFill.style.width = (percent * 100) + '%';
+        // Fechar modal com a tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
